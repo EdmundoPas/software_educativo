@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego Educativo</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<h1>Juego Educativo Escolar</h1>
+<div id="user-container" class="login-container">
+  <h2>Ingresa tu nombre</h2>
+  <input type="text" id="username" list="user-list-datalist" placeholder="Escribe tu nombre aquí">
+  <datalist id="user-list-datalist"></datalist>
+  <button onclick="loginUser()">Jugar</button>
+</div>
+
+<div id="main-menu" style="display: none;">
+    <h2 id="main-title">Selecciona un curso</h2>
+    
+    <div id="menu-course" class="menu">
+      <button onclick="selectCourse('matematica')">Matemática</button>
+      <button onclick="selectCourse('comunicacion')">Comunicación</button>
+      <button onclick="selectCourse('historia')">Historia</button>
+      <button onclick="selectCourse('ciencia')">Ciencia</button>
+    </div>
+    
+    <div id="menu-difficulty" class="menu" style="display: none;">
+      <button onclick="startQuiz('easy')">Fácil</button>
+      <button onclick="startQuiz('medium')">Medio</button>
+      <button onclick="startQuiz('hard')">Difícil</button>
+    </div>
+</div>
+
+<div class="progress-container">
+  <h2>Tu Progreso</h2>
+  <div id="progress"></div>
+</div>
+
+<div class="ranking-link-container">
+    <a href="ranking.html" class="ranking-link">Ver Ranking</a>
+    <a href="admin.html" class="ranking-link">Panel de Administrador</a>
+</div>
+
+
+
+<script>
+let selectedCourse = '';
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadUsers();
+});
+
+function loadUsers() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const dataList = document.getElementById('user-list-datalist');
+    dataList.innerHTML = '';
+    users.forEach(user => {
+        const option = document.createElement('option');
+        option.value = user;
+        dataList.appendChild(option);
+    });
+}
+
+function loginUser() {
+  const username = document.getElementById('username').value.trim();
+  if (username === '') {
+    alert('Por favor, ingresa un nombre de usuario.');
+    return;
+  }
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  if (!users.includes(username)) {
+    users.push(username);
+    localStorage.setItem('users', JSON.stringify(users));
+    loadUsers(); // Refresh the datalist
+  }
+  localStorage.setItem('username', username);
+  document.getElementById('user-container').style.display = 'none';
+  document.getElementById('main-menu').style.display = 'block';
+}
+
+function selectCourse(course) {
+  selectedCourse = course;
+  document.getElementById('main-title').innerText = 'Selecciona una dificultad';
+  document.getElementById('menu-course').style.display = 'none';
+  document.getElementById('menu-difficulty').style.display = 'block';
+}
+
+function startQuiz(difficulty) {
+  localStorage.setItem("course", selectedCourse);
+  localStorage.setItem("difficulty", difficulty);
+  window.location = "quiz.html";
+}
+
+const username = localStorage.getItem('username');
+const scores = JSON.parse(localStorage.getItem('scores')) || [];
+const userScores = scores.filter(score => score.username === username);
+const progressDiv = document.getElementById('progress');
+const progress = {};
+
+userScores.forEach(score => {
+  if (!progress[score.course]) {
+    progress[score.course] = {};
+  }
+  if (!progress[score.course][score.difficulty] || progress[score.course][score.difficulty] < score.score) {
+    progress[score.course][score.difficulty] = score.score;
+  }
+});
+
+let progressHTML = '';
+for (const course in progress) {
+  progressHTML += `<h3>${course.toUpperCase()}</h3>`;
+  for (const difficulty in progress[course]) {
+    progressHTML += `<p>${difficulty}: ${progress[course][difficulty]} puntos</p>`;
+  }
+}
+
+if (progressHTML === '') {
+  progressHTML = '<p>No tienes progreso aún. ¡Empieza a jugar!</p>';
+}
+
+progressDiv.innerHTML = progressHTML;
+
+
+
+
+
+</script>
+
+</body>
+</html>

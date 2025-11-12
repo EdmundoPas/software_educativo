@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ranking</title>
+<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<h1>Ranking de Puntajes</h1>
+
+<table id="ranking-table">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Curso</th>
+      <th>Dificultad</th>
+      <th>Puntaje</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<a href="index.html">Volver al menú</a>
+
+<script>
+  const scores = JSON.parse(localStorage.getItem('scores')) || [];
+  const tableBody = document.querySelector('#ranking-table tbody');
+
+  // Sort scores by score descending
+  scores.sort((a, b) => b.score - a.score);
+
+  scores.forEach(score => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${score.username}</td>
+      <td>${score.course}</td>
+      <td>${score.difficulty}</td>
+      <td>${score.score}</td>
+      <td>${new Date(score.date).toLocaleString()}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* Importar una fuente divertida */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background: linear-gradient(45deg, #f5f5f5, #e0e0e0, #d3d3d3); /* Gradiente neutro en grises */
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes rainbow {
+  0% { background-color: #ff0000; }
+  16.66% { background-color: #ff8000; }
+  33.33% { background-color: #ffff00; }
+  50% { background-color: #00ff00; }
+  66.66% { background-color: #0080ff; }
+  83.33% { background-color: #8000ff; }
+  100% { background-color: #ff0000; }
+}
+
+
+
+
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #0066cc; /* Azul */
+  text-shadow: 2px 2px 4px #FFFFFF; /* Sombra blanca */
+  animation: fadeInUp 0.8s ease-out;
+}
+
+h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #cc0000; /* Rojo */
+  text-shadow: 2px 2px 4px #FFFFFF; /* Sombra blanca */
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.menu button, #nextBtn {
+  padding: 15px 30px;
+  margin: 15px;
+  cursor: pointer;
+  border: none;
+  background: #ccc; /* Gris medio neutro */
+  color: #333;
+  border-radius: 15px;
+  font-size: 1.5em;
+  font-family: 'Luckiest Guy', cursive;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 5px #999; /* Sombra gris oscuro */
+  animation: bounce 2s infinite;
+}
+
+.menu button:hover, #nextBtn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background-color: #ddd; /* Gris claro neutro */
+  animation: none;
+}
+
+.menu button:active, #nextBtn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #999;
+}
+
+.quiz-container {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+  background: #FFFFFF; /* Blanco */
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  animation: zoomIn 0.5s ease-in-out;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#question {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333; /* Gris oscuro neutro */
+}
+
+#options button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border: 3px solid #ccc; /* Gris medio */
+  background: #f0f0f0; /* Gris muy claro */
+  border-radius: 15px;
+  font-size: 1.3em;
+  transition: all 0.2s;
+  animation: slideInUp 0.6s ease-out;
+}
+
+#options button:hover {
+  background-color: #e0e0e0; /* Gris claro */
+  border-color: #aaa; /* Gris */
+  transform: translateX(10px);
+}
+
+#options button.correct {
+  background-color: #99ccff; /* Azul claro */
+  border-color: #0066cc; /* Azul */
+  animation: pulseCorrect 0.5s;
+}
+
+#options button.incorrect {
+  background-color: #ffcccc; /* Rojo claro */
+  border-color: #cc0000; /* Rojo */
+  animation: shakeIncorrect 0.5s;
+}
+
+@keyframes pulseCorrect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shakeIncorrect {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Estilos para el contenedor de login */
+.login-container {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 30px auto;
+    border-top: 5px solid #0066cc; /* Azul */
+}
+
+.login-container h2 {
+    color: #cc0000; /* Rojo */
+    text-shadow: none;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.login-container input {
+    width: calc(100% - 40px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 8px rgba(0,102,204,0.2);
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    background: #bbb; /* Gris medio */
+    color: #333;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.login-container button:hover {
+    background-color: #999; /* Gris oscuro */
+}
+
+.admin-link-container button {
+    padding: 10px 20px;
+    background: #cc0000; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.admin-link-container button:hover {
+    background-color: #ff3333; /* Rojo claro */
+}
+
+
+/* Estilos para el ranking, progreso y admin */
+.progress-container, .ranking-container, .admin-container {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+#ranking-table th, #ranking-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#ranking-table th {
+    background-color: #0066cc; /* Azul */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: white;
+}
+
+#ranking-table td {
+    font-size: 1em;
+}
+
+#ranking-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gris muy claro */
+}
+
+#ranking-table tbody tr:hover {
+    background-color: #e9e9e9; /* Gris claro */
+}
+
+
+a {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #cc0000; /* Rojo */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+a:hover {
+    background-color: #ff3333; /* Rojo claro */
+}
+
+/* Estilos para el panel de administrador */
+#tablaResultados {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+}
+
+#tablaResultados th, #tablaResultados td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#tablaResultados th {
+    background-color: #0066cc; /* Azul */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: white;
+    text-transform: uppercase;
+}
+
+#tablaResultados td {
+    font-size: 1em;
+    color: #333;
+}
+
+#tablaResultados tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gris muy claro */
+}
+
+#tablaResultados tbody tr:hover {
+    background-color: #e9e9e9; /* Gris claro */
+}
+
+#tablaResultados button {
+    padding: 8px 12px;
+    background-color: #cc0000; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+#tablaResultados button:hover {
+    background-color: #ff3333; /* Rojo claro */
+}
+
+.btn-eliminar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
+}

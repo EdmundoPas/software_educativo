@@ -361,3 +361,20 @@ a:hover {
 .btn-eliminar:hover {
   background-color: #c0392b;
 }
+
+/* Estilos del logo */
+.logo-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(-10deg);
+}
